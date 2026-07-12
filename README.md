@@ -25,7 +25,7 @@ All code from the [C# Sensei YouTube channel](https://youtube.com/@CSharpSensei)
 
 ```bash
 git clone https://github.com/csharpsensei/csharp-sensei.git
-cd csharp-sensei/white-belt/001-what-is-a-class
+cd csharp-sensei/01-white-belt/001-what-is-a-class
 dotnet run
 ```
 

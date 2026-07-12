@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/01-white-belt/">
+    <Project Path="01-white-belt/001-what-is-a-class/001-what-is-a-class.csproj" />
+  </Folder>
+  <Folder Name="/02-yellow-belt/" />
+  <Folder Name="/03-green-belt/" />
+  <Folder Name="/04-brown-belt/" />
+  <Folder Name="/05-black-belt/" />
+</Solution>
