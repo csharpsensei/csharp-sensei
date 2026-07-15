@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Lesson002.Methods</RootNamespace>
+    <!-- Snippet files are read-along material, never compiled (prevents CS8802) -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);snippets/**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="snippets/**" />
+  </ItemGroup>
+
+</Project>

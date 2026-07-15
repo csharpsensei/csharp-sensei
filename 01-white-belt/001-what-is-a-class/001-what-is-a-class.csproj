@@ -6,11 +6,11 @@
         <RootNamespace>what_is_a_class</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <DefaultItemExcludes>$(DefaultItemExcludes);snippets/**</DefaultItemExcludes>
     </PropertyGroup>
-    
+
     <ItemGroup>
-        <Compile Remove="snippets/**" />
-        <None Include="snippets/**" />  <!-- visible in Rider, ignored by compiler -->
+        <None Include="snippets/**" />
     </ItemGroup>
 
 </Project>
