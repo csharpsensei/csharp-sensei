@@ -5,7 +5,9 @@
     <Project Path="01-white-belt/L003/L003.csproj" />
   </Folder>
   <Folder Name="/02-yellow-belt/" />
-  <Folder Name="/03-green-belt/" />
+  <Folder Name="/03-green-belt/">
+    <Project Path="03-green-belt/L004/L004.csproj" />
+  </Folder>
   <Folder Name="/04-brown-belt/" />
   <Folder Name="/05-black-belt/" />
 </Solution>
