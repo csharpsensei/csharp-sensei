@@ -3,6 +3,7 @@
     <Project Path="01-white-belt/L001/L001.csproj" />
     <Project Path="01-white-belt/L002/L002.csproj" />
     <Project Path="01-white-belt/L003/L003.csproj" />
+    <Project Path="01-white-belt/L005/L005.csproj" />
   </Folder>
   <Folder Name="/02-yellow-belt/" />
   <Folder Name="/03-green-belt/">
