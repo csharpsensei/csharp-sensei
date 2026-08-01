@@ -1,0 +1,4 @@
+caller finished
+
+Unhandled exception.
+System.InvalidOperationException: report failed

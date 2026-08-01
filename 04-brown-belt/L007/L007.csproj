@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>AsyncAwaitFromTheGroundUp</RootNamespace>
+    <AssemblyName>AsyncAwaitFromTheGroundUp</AssemblyName>
+    <DefaultItemExcludes>$(DefaultItemExcludes);snippets/**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="snippets/**" />
+  </ItemGroup>
+
+</Project>

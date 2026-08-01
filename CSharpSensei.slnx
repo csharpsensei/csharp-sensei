@@ -5,10 +5,14 @@
     <Project Path="01-white-belt/L003/L003.csproj" />
     <Project Path="01-white-belt/L005/L005.csproj" />
   </Folder>
-  <Folder Name="/02-yellow-belt/" />
+  <Folder Name="/02-yellow-belt/">
+    <Project Path="02-yellow-belt/L006/L006.csproj" />
+  </Folder>
   <Folder Name="/03-green-belt/">
     <Project Path="03-green-belt/L004/L004.csproj" />
   </Folder>
-  <Folder Name="/04-brown-belt/" />
+  <Folder Name="/04-brown-belt/">
+    <Project Path="04-brown-belt/L007/L007.csproj" />
+  </Folder>
   <Folder Name="/05-black-belt/" />
 </Solution>

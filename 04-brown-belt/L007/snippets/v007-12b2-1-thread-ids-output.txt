@@ -1,0 +1,2 @@
+before await : thread 1
+after  await : thread 6

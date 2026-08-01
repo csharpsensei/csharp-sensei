@@ -1,0 +1,4 @@
+orders                 : 1,000
+customers              : 1,000
+
+worst-case comparisons : 1,000,000

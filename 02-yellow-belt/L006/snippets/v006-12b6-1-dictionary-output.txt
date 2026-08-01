@@ -1,0 +1,6 @@
+lookup 2         -> Ben
+TryGetValue(99)  -> False, customer is null
+
+1 Aiko
+2 Ben
+3 Chidi

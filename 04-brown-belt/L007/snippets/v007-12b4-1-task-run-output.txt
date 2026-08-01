@@ -1,0 +1,3 @@
+delay   : thread 1 -> thread 6
+compute : thread 7
+primes below 2000000 : 148933

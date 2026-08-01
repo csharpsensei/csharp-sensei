@@ -1,0 +1,10 @@
+Aiko
+Ben
+Chidi
+Count: 3
+First: Aiko
+
+after Remove("Ben")
+Aiko
+Chidi
+Count: 2

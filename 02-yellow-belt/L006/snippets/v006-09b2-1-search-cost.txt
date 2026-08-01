@@ -1,0 +1,5 @@
+customers    lookups        comparisons
+
+       10          1                 10
+   10,000          1             10,000
+   10,000     10,000        100,000,000
