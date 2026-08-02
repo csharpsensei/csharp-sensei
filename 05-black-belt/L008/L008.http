@@ -1,0 +1,144 @@
+### C# SENSEI — V008 Wide Events
+### Click "Send Request" above any block below. Works in Visual Studio 2022,
+### Rider and the VS Code REST Client.
+###
+### Only {{$randomInt}} and {{$timestamp}} are used, because they are the two
+### dynamic variables all three editors support. Rider additionally offers
+### {{$random.integer(a, b)}}, {{$uuid}} and friends — nicer, but not portable.
+
+### PORT: 5000 comes from Properties/launchSettings.json. If the console prints
+### a different address on startup (running the built DLL, or a container, skips
+### launchSettings), change the line below to match it.
+
+@host = http://localhost:5000
+
+###############################################################################
+# 1. THE TWO SHOTS FROM THE VIDEO
+#    Fixed values, so what you see matches what the lesson describes.
+###############################################################################
+
+### Small free-tier cart — fast, approved. The boring 95% of your traffic.
+POST {{host}}/checkout
+Content-Type: application/json
+
+{
+  "userId": "u_10001",
+  "tier": "free",
+  "total": 42.00,
+  "items": 2
+}
+
+### Large enterprise cart — slow, and likely declined.
+### This is the request the whole lesson is about.
+POST {{host}}/checkout
+Content-Type: application/json
+
+{
+  "userId": "u_88214",
+  "tier": "enterprise",
+  "total": 1299.99,
+  "items": 7
+}
+
+###############################################################################
+# 2. RANDOMISED SINGLE REQUESTS
+#    Every send produces a new customer, which is what high cardinality
+#    actually looks like in the data.
+###############################################################################
+
+### Random free-tier customer
+POST {{host}}/checkout
+Content-Type: application/json
+
+{
+  "userId": "u_{{$randomInt}}",
+  "tier": "free",
+  "total": {{$randomInt}}.99,
+  "items": 1
+}
+
+### Random business-tier customer
+POST {{host}}/checkout
+Content-Type: application/json
+
+{
+  "userId": "u_{{$randomInt}}",
+  "tier": "business",
+  "total": {{$randomInt}}.50,
+  "items": 3
+}
+
+### Random enterprise customer — expect this one to be slow
+POST {{host}}/checkout
+Content-Type: application/json
+
+{
+  "userId": "u_{{$randomInt}}",
+  "tier": "enterprise",
+  "total": {{$randomInt}}.00,
+  "items": 6
+}
+
+###############################################################################
+# 3. SEED REAL VOLUME  ← run this before querying Azure
+#
+#    A percentile over nine requests is not a percentile. Send this once and
+#    wait; 400 requests takes roughly 20-30 seconds because the simulated
+#    gateway has deliberate latency.
+#
+#    /seed sends the traffic to whatever address you called it on, so it cannot
+#    drift out of step with the port the app is actually listening on.
+#
+#    Then give Azure 2-5 minutes to ingest before running any KQL.
+###############################################################################
+
+### Seed 400 checkouts, 16 at a time (the default)
+POST {{host}}/seed
+Content-Type: application/json
+
+### Seed a bigger sample — better percentiles, longer wait.
+### 1500 takes a couple of minutes; raise your editor's request timeout first.
+POST {{host}}/seed?count=1500&concurrency=32
+Content-Type: application/json
+
+### Quick smoke test — 20 requests, back in a few seconds
+POST {{host}}/seed?count=20&concurrency=4
+Content-Type: application/json
+
+###############################################################################
+# 4. EDGE CASES WORTH HAVING IN THE DATA
+###############################################################################
+
+### Right on the £500 boundary that changes the gateway's behaviour
+POST {{host}}/checkout
+Content-Type: application/json
+
+{
+  "userId": "u_{{$randomInt}}",
+  "tier": "enterprise",
+  "total": 500.00,
+  "items": 1
+}
+
+### Single high-value item
+POST {{host}}/checkout
+Content-Type: application/json
+
+{
+  "userId": "u_{{$randomInt}}",
+  "tier": "business",
+  "total": 2400.00,
+  "items": 1
+}
+
+### A repeat customer — send several times to build one person's history,
+### which is what the "find one customer" query reads back.
+POST {{host}}/checkout
+Content-Type: application/json
+
+{
+  "userId": "u_88214",
+  "tier": "enterprise",
+  "total": {{$randomInt}}.00,
+  "items": 4
+}

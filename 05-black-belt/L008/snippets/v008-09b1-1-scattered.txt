@@ -1,0 +1,7 @@
+Auth        -> knows the user and the tier
+Cart        -> knows the value and the item count
+Pricing     -> knows which discounts applied
+Payment     -> knows the gateway and the decline code
+Middleware  -> knows the duration and the status
+
+17 emit points. None of them knows the whole story.

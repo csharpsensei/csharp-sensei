@@ -1,0 +1,6 @@
+requests
+| extend code = tostring(customDimensions["payment.decline_code"]),
+         gateway = tostring(customDimensions["payment.gateway"])
+| where isnotempty(code)
+| summarize failures = count() by code, gateway
+| order by failures desc

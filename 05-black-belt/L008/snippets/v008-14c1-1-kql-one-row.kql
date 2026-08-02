@@ -1,0 +1,6 @@
+requests
+| where name == "POST /checkout"
+| top 1 by timestamp desc
+| mv-expand kind=array customDimensions
+| project field = tostring(customDimensions[0]),
+          value = tostring(customDimensions[1])

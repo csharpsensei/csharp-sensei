@@ -1,0 +1,5 @@
+{
+  "Message": "Payment failed for u_88214 amount 129.99",
+  "UserId":  "u_88214",
+  "Amount":  129.99
+}

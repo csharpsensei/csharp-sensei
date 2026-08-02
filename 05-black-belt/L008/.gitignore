@@ -1,0 +1,10 @@
+# Never commit a connection string. The project reads it from user-secrets or
+# the environment — see README.md — so none of these should exist, and if one
+# does it is a mistake rather than a convention.
+appsettings.Local.json
+appsettings.*.Local.json
+*.local.json
+.env
+
+bin/
+obj/

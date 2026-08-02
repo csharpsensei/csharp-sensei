@@ -1,0 +1,7 @@
+requests
+| where tostring(customDimensions["user.id"]) == "u_88214"
+| project timestamp, duration, resultCode,
+          cart = customDimensions["cart.value"],
+          gateway = customDimensions["payment.gateway"],
+          decline = customDimensions["payment.decline_code"]
+| order by timestamp desc

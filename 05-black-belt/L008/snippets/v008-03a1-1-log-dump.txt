@@ -1,0 +1,10 @@
+info: Auth.Handler[0]      Token validated
+info: Cart.Service[0]      Cart loaded
+info: Cart.Service[0]      Cache miss
+info: Pricing.Engine[0]    Discount applied
+info: Payment.Client[0]    Gateway selected
+info: Payment.Client[0]    Request sent
+info: Payment.Client[0]    Response received
+info: Order.Service[0]     Order created
+info: Email.Sender[0]      Receipt queued
+        ... 8 more lines ...

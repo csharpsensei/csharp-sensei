@@ -1,0 +1,5 @@
+requests
+| extend tier = tostring(customDimensions["user.tier"])
+| summarize p95 = percentile(duration, 95)
+            by tier, bin(timestamp, 1m)
+| render timechart

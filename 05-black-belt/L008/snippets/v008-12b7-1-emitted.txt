@@ -1,0 +1,8 @@
+{
+  "request.route": "/checkout",   "request.status": 402,
+  "duration.ms": 1812.4,
+  "user.id": "u_88214",        "user.tier": "enterprise",
+  "cart.value": 1299.99,       "cart.items": 7,
+  "payment.gateway": "adyen",  "payment.approved": false,
+  "payment.decline_code": "insufficient_funds"
+}

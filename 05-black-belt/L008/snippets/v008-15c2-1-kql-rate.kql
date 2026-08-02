@@ -1,0 +1,8 @@
+requests
+| extend cart = todouble(customDimensions["cart.value"]),
+         approved = tostring(customDimensions["payment.approved"])
+| extend band = case(cart >= 1000, "1000+",
+                     cart >=  500, "500-999", "under 500")
+| summarize total = count(),
+            declined = countif(approved == "False") by band
+| extend decline_rate = round(100.0 * declined / total, 1)

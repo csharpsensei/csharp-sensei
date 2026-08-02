@@ -1,0 +1,7 @@
+requests
+| where name == "POST /checkout"
+| extend tier = tostring(customDimensions["user.tier"])
+| summarize p50 = percentile(duration, 50),
+            p95 = percentile(duration, 95),
+            n = count() by tier
+| order by p95 desc

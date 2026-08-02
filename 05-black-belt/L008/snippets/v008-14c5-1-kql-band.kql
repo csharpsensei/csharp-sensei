@@ -1,0 +1,9 @@
+requests
+| where name == "POST /checkout"
+| extend tier = tostring(customDimensions["user.tier"]),
+         cart = todouble(customDimensions["cart.value"])
+| extend band = case(cart >= 1000, "1000+",
+                     cart >=  500, "500-999", "under 500")
+| summarize p95 = percentile(duration, 95), n = count()
+            by tier, band
+| order by p95 desc

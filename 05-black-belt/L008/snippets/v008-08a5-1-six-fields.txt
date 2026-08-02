@@ -1,0 +1,6 @@
+{
+  "UserId": "u_88214",   "Tier":    "enterprise",
+  "CartValue": 129.99,   "Gateway": "adyen",
+  "DeclineCode": "insufficient_funds",
+  "Attempt": 2
+}
