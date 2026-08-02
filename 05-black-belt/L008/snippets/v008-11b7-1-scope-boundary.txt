@@ -1,0 +1,10 @@
+  using (who)              user.id, user.tier
+      using (cart)         + cart.value, cart.items
+          using (payment)  + payment.gateway, attempt, approved
+              "payment settled"   <-- everything, but MID-journey
+          }                       <-- payment fields gone
+      }                           <-- cart fields gone
+  }
+  "request finished"              <-- the end, but only two fields
+
+  Everything gathered, or at the end. Not both.

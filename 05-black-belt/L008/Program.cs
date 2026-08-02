@@ -87,9 +87,11 @@ app.MapPost("/checkout", async (
         : Results.Json(new { status = "declined", result.DeclineCode }, statusCode: 402);
 });
 
-// The same checkout written with BeginScope and nested scopes, for comparison.
-// Watch the console: this produces FOUR decorated lines where /checkout produces
-// one wide event — and none of its fields reach customDimensions in Azure.
+// The same journey written with BeginScope and nested scopes — done properly,
+// so the comparison is fair. Watch the CONSOLE: context accumulates down the
+// journey exactly as you would want. Then check customDimensions in Azure and
+// find none of it there, because scope state never becomes an Activity tag.
+// WideEventMiddleware skips this route so the two do not contaminate each other.
 app.MapPost("/checkout-scoped", async (
     CheckoutRequest request,
     ScopedCheckoutDemo demo,

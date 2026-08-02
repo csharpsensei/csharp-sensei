@@ -13,8 +13,22 @@ namespace WideEvents.Events;
 /// </summary>
 public sealed class WideEventMiddleware(RequestDelegate next, ILogger<WideEventMiddleware> logger)
 {
+    /// <summary>
+    /// The BeginScope comparison route emits nothing here on purpose. If the
+    /// wide event ran for it too, payment fields would land in customDimensions
+    /// for that endpoint and it would look as though scope state had reached
+    /// Azure. It has not — see Scopes/ScopedCheckoutDemo.
+    /// </summary>
+    private const string ScopeDemoPath = "/checkout-scoped";
+
     public async Task InvokeAsync(HttpContext http)
     {
+        if (http.Request.Path.StartsWithSegments(ScopeDemoPath))
+        {
+            await next(http);
+            return;
+        }
+
         var evt = new WideEvent();
         http.Items[WideEventExtensions.ItemsKey] = evt;
 

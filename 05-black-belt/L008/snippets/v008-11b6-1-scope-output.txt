@@ -1,8 +1,6 @@
-info: checkout started  => user.id:u_88214 user.tier:enterprise
-info: cart priced       => user.id:u_88214 user.tier:enterprise
-                           cart.value:1299.99 cart.items:7
-info: payment settled   => user.id:u_88214 user.tier:enterprise
-                           cart.value:1299.99 cart.items:7
-                           payment.gateway:adyen payment.approved:False
-info: checkout finished => user.id:u_88214 user.tier:enterprise
-                           cart.value:1299.99 cart.items:7
+info: checkout started  => user.id user.tier
+info: cart priced       => user.id user.tier cart.value cart.items
+info: payment settled   => user.id user.tier cart.value cart.items
+                           payment.gateway payment.attempt payment.approved
+
+Seven fields on one line. Nothing was passed as a parameter.
