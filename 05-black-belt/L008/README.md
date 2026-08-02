@@ -160,6 +160,41 @@ about any real payment provider — but it means the numbers your queries return
 are honestly derived from what the code actually did, rather than invented for
 a slide.
 
+## 5. "Isn't this just `BeginScope`?"
+
+The best objection to this whole pattern, and it deserves a real answer.
+`Scopes/ScopedCheckoutDemo.cs` is the same checkout written with `BeginScope`
+and nested scopes — correctly, not as a straw man. `POST /checkout-scoped` runs
+it. Compare the console output with `/checkout`.
+
+**What `BeginScope` gets right.** State on an `AsyncLocal` stack that flows
+across awaits into code you never passed anything to. Scopes nest, dispose LIFO,
+and `using` enforces the order. That is real ambient context.
+
+**Why it isn't a wide event.**
+
+| | `BeginScope` | Wide event |
+|---|---|---|
+| Output for one request | 4 decorated lines | 1 row |
+| Storage | goes **up** | goes down |
+| Can a nested frame add a field? | **No** — no API reaches an enclosing scope | Yes, via `http.Event()` |
+| Survives the closing brace? | No | Yes, until the middleware emits |
+| Reaches `customDimensions`? | **No** | Yes — they become `Activity` tags |
+
+That last row is the one that costs an afternoon: set a field with `BeginScope`
+and every KQL query in §4 returns nothing.
+
+**Scopes are invisible until you ask for them.** This is why most developers
+think the feature is broken:
+
+```csharp
+builder.Logging.AddSimpleConsole(o => o.IncludeScopes = true);
+```
+
+Keep `BeginScope` for what it is excellent at — correlating the lines you *do*
+write, without threading a parameter through six signatures. It is not the
+destination.
+
 ## The drill
 
 Take one endpoint in your own codebase and give it a wide event with at least

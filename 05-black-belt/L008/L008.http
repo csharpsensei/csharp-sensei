@@ -142,3 +142,38 @@ Content-Type: application/json
   "total": {{$randomInt}}.00,
   "items": 4
 }
+
+###############################################################################
+# 5. THE BeginScope COMPARISON  (video section 10.5)
+#
+#    Same checkout, written with BeginScope and nested scopes instead of a
+#    wide event. Watch the CONSOLE, not the response:
+#
+#      /checkout          -> ONE wide event, every field on one row
+#      /checkout-scoped   -> FOUR decorated log lines, fields spread across them
+#
+#    And nothing from /checkout-scoped reaches customDimensions in Azure, so
+#    none of the KQL above will find it.
+###############################################################################
+
+### The scoped version — four lines where the wide event writes one
+POST {{host}}/checkout-scoped
+Content-Type: application/json
+
+{
+  "userId": "u_88214",
+  "tier": "enterprise",
+  "total": 1299.99,
+  "items": 7
+}
+
+### The same payload through the wide-event endpoint, for comparison
+POST {{host}}/checkout
+Content-Type: application/json
+
+{
+  "userId": "u_88214",
+  "tier": "enterprise",
+  "total": 1299.99,
+  "items": 7
+}

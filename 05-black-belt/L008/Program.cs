@@ -2,9 +2,19 @@ using Azure.Monitor.OpenTelemetry.AspNetCore;
 using WideEvents.Events;
 using WideEvents.Models;
 using WideEvents.Payments;
+using WideEvents.Scopes;
 using WideEvents.Seeding;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Scopes are INVISIBLE unless the provider is told to print them. This one line
+// is why most developers have never seen their own BeginScope output, and think
+// scopes "don't work" — see ScopedCheckoutDemo and README §5.
+builder.Logging.AddSimpleConsole(o =>
+{
+    o.IncludeScopes = true;
+    o.SingleLine = true;
+});
 
 // --- telemetry -------------------------------------------------------------
 // The connection string is NEVER passed in code and never committed. Azure
@@ -34,6 +44,7 @@ if (hasConnectionString)
 // --- application services --------------------------------------------------
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IPaymentGateway, SimulatedPaymentGateway>();
+builder.Services.AddScoped<ScopedCheckoutDemo>();
 builder.Services.AddSingleton<TrafficSeeder>();
 
 // No BaseAddress here on purpose. The app must not carry a second, hard-coded
@@ -71,6 +82,20 @@ app.MapPost("/checkout", async (
 
     var result = await gateway.ChargeAsync(request, ct);
 
+    return result.Approved
+        ? Results.Ok(new { status = "approved", result.Gateway })
+        : Results.Json(new { status = "declined", result.DeclineCode }, statusCode: 402);
+});
+
+// The same checkout written with BeginScope and nested scopes, for comparison.
+// Watch the console: this produces FOUR decorated lines where /checkout produces
+// one wide event — and none of its fields reach customDimensions in Azure.
+app.MapPost("/checkout-scoped", async (
+    CheckoutRequest request,
+    ScopedCheckoutDemo demo,
+    CancellationToken ct) =>
+{
+    var result = await demo.RunAsync(request, ct);
     return result.Approved
         ? Results.Ok(new { status = "approved", result.Gateway })
         : Results.Json(new { status = "declined", result.DeclineCode }, statusCode: 402);
