@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>HowInheritanceWorks</RootNamespace>
+    <!-- Demo 07 exists to show the compiler warning you get for hiding a
+         virtual method without saying `new`. Warnings must therefore stay
+         warnings here — turning them into errors would hide the lesson. -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <!-- snippets/ are read-along files for the video, never compiled. Removing
+         this line causes CS0101/CS8802 duplicate-definition errors — see
+         PRODUCTION-SYSTEM.md §3. -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);snippets/**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="snippets/**" />
+  </ItemGroup>
+
+</Project>

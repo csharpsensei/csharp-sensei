@@ -1,0 +1,8 @@
+dotnet run -- 6
+
+  variable type -> Drill
+  object type   -> SparringDrill
+  Describe()    -> Randori — 30 minutes, 6 rounds
+
+The object won. Same call site, same variable type,
+different answer — decided at run time.

@@ -1,0 +1,9 @@
+public class FormsSession          public class SparringSession
+{                                  {
+    public string Name { get; }        public string Name { get; }
+    public int Minutes { get; }        public int Minutes { get; }
+    public int Attendees { get; }      public int Attendees { get; }
+
+    public bool ShouldCancel()         public bool ShouldCancel()
+        => Attendees < 1;                  => Attendees < 2;
+}                                  }

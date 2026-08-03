@@ -1,0 +1,8 @@
+dotnet run -- 5
+
+A method that is NOT virtual, called through a base
+reference, runs the base version — the object's real
+type is ignored.
+
+  Drill reference -> Kata — 45 minutes
+  ^ that is Drill.Describe(), on a FormsDrill object.

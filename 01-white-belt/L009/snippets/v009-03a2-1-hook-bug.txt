@@ -1,0 +1,8 @@
+dotnet run -- 1
+
+Two sessions. One attendee each. Same rule, supposedly.
+  forms    ShouldCancel() -> False
+  sparring ShouldCancel() -> True
+
+The rule was fixed in one class and not the other.
+Nothing failed. Nothing warned. No test noticed.

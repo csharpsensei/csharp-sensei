@@ -1,0 +1,8 @@
+dotnet run -- 2
+
+FormsDrill declares one field and one constructor.
+Name and Minutes came from Drill and are not repeated.
+
+  Name     -> Kata
+  Describe -> Kata — 45 minutes
+  Calories -> 180

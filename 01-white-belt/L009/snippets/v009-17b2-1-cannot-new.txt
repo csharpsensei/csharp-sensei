@@ -1,0 +1,8 @@
+var e = new Exercise("something");
+
+// CS0144: cannot create an instance of the abstract
+//         type or interface 'Exercise'
+
+// Which is correct. There is no such thing as
+// "an exercise" — only push-ups, and squats,
+// and burpees.

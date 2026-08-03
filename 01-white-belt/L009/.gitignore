@@ -1,0 +1,9 @@
+# This lesson reads nothing, writes nothing and needs no configuration, so
+# there is no secret it could leak. These entries exist so a settings file
+# added while experimenting cannot travel — PRODUCTION-SYSTEM.md §16.3.
+appsettings.Local.json
+*.local.json
+.env
+
+bin/
+obj/

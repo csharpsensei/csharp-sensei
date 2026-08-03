@@ -1,0 +1,9 @@
+// Leave out both words and the compiler tells you:
+
+warning CS0114: 'HidingDrill.Describe()' hides
+inherited member 'Drill.Describe()'. To make the
+current member override that implementation, add
+the override keyword. Otherwise add the new keyword.
+
+// It is asking which one you meant.
+// The answer is almost always override.

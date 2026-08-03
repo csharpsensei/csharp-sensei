@@ -1,0 +1,7 @@
+  Drill.Describe()      Randori — 30 minutes
+  SparringDrill adds                  , 6 rounds
+  ------------------------------------------------
+  result                Randori — 30 minutes, 6 rounds
+
+One line of new behaviour on top of the old one,
+instead of a second copy of it.

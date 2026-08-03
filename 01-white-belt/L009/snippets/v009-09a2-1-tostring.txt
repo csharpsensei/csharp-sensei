@@ -1,0 +1,8 @@
+public override string ToString() => Describe();
+
+dotnet run -- 4
+
+  new object().ToString()  -> System.Object
+  drill.ToString()         -> Kata — 45 minutes
+  drill.GetType().Name     -> FormsDrill
+  drill is object          -> True

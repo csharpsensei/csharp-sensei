@@ -1,0 +1,8 @@
+dotnet run -- 3
+
+Watch which constructor finishes first.
+
+  base ran first, so Name was set before the
+  derived body: Randori
+  then the derived body set its own field:
+  Randori — 30 minutes, 6 rounds

@@ -1,0 +1,8 @@
+var drill = new FormsDrill("Kata", 45, 3);
+
+// CS1729: 'FormsDrill' does not contain a constructor
+//         that takes 3 arguments
+
+// Constructors are the ONE thing a derived class does
+// not inherit. Fields, properties and methods come down.
+// Constructors do not.

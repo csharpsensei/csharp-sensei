@@ -1,0 +1,9 @@
+dotnet run -- 10
+
+  Kata — 3 forms over 45 minutes          180 calories
+  Randori — 30 minutes, 6 rounds          330 calories
+  Circuits — 20 minutes, weighted         280 calories
+  Grading — 40 minutes, 8 rounds          440 calories
+      — grading for green belt
+
+  total -> 1230 calories

@@ -1,0 +1,9 @@
+dotnet run -- 9
+
+  CachedSummary (built during construction)
+      -> Randori — 0 rounds
+  Describe()    (called afterwards)
+      -> Randori — 6 rounds
+
+Same method. Same object. Only the timing differs.
+Never call a virtual method from a constructor.

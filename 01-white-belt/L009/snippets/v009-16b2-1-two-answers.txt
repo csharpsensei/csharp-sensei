@@ -1,0 +1,10 @@
+dotnet run -- 7
+
+One object. Two variables. Two different answers.
+
+  HidingDrill reference -> Kata — 3 forms
+  Drill       reference -> Kata — 45 minutes
+  same object?          -> True
+
+`new` HIDES rather than replaces, so the VARIABLE
+decides. Compare demo 6, where the OBJECT decided.
