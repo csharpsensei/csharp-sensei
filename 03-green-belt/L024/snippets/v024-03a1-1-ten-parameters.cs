@@ -1,0 +1,11 @@
+    public PositionalBooking(
+        string guestName,
+        DateOnly checkIn,
+        DateOnly checkOut,
+        int adults,
+        int children,
+        RoomType room,
+        bool breakfast,
+        bool lateCheckout,
+        bool cot,
+        string notes)
