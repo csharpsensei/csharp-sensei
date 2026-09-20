@@ -7,6 +7,7 @@
     <Project Path="01-white-belt/L009/L009.csproj" />
     <Project Path="01-white-belt/L010/L010.csproj" />
     <Project Path="01-white-belt/L011/L011.csproj" />
+    <Project Path="01-white-belt/L025/L025.csproj" />
   </Folder>
   <Folder Name="/02-yellow-belt/">
     <Project Path="02-yellow-belt/L006/L006.csproj" />
@@ -24,6 +25,7 @@
     <Project Path="03-green-belt/L020/L020.csproj" />
     <Project Path="03-green-belt/L022/L022.csproj" />
     <Project Path="03-green-belt/L024/L024.csproj" />
+    <Project Path="03-green-belt/L026/L026.csproj" />
   </Folder>
   <Folder Name="/04-brown-belt/">
     <Project Path="04-brown-belt/L007/L007.csproj" />
