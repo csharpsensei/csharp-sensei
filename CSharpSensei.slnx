@@ -26,6 +26,8 @@
     <Project Path="03-green-belt/L022/L022.csproj" />
     <Project Path="03-green-belt/L024/L024.csproj" />
     <Project Path="03-green-belt/L026/L026.csproj" />
+    <Project Path="03-green-belt/L027/L027.csproj" />
+    <Project Path="03-green-belt/L028/L028.csproj" />
   </Folder>
   <Folder Name="/04-brown-belt/">
     <Project Path="04-brown-belt/L007/L007.csproj" />

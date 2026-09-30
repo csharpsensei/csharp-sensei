@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    One project on purpose. A real solution keeps the application and its
+    tests in two projects. The lesson keeps both here so the whole thing is
+    one folder and one command, and the README names that simplification.
+    xUnit v3 test projects are executables, so `dotnet run` runs the tests.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>WhyWeTest</RootNamespace>
+    <DefaultItemExcludes>$(DefaultItemExcludes);snippets/**</DefaultItemExcludes>
+    <!--
+      xUnit1051 asks every async call in a test to pass the test's
+      cancellation token. Right for a large suite, and noise on screen for a
+      first look at tests, so it is switched off here and named in the README.
+    -->
+    <NoWarn>$(NoWarn);xUnit1051</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="snippets/**" />
+  </ItemGroup>
+
+</Project>
