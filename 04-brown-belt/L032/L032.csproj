@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Needs the .NET 11 SDK. At the time of writing that is release candidate 1,
+    SDK 11.0.100-rc.1, which selects C# 15 by default for net11.0, so no
+    LangVersion setting is needed for anything this project uses.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>WhatsNew</RootNamespace>
+    <DefaultItemExcludes>$(DefaultItemExcludes);snippets/**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <!--
+    Regression/ holds a switch that misses a case on purpose, to show the
+    compiler's warning. It is left out of a normal build so the project builds
+    clean. To see the warning: dotnet build -p:ShowMissingCase=true
+  -->
+  <ItemGroup Condition="'$(ShowMissingCase)' != 'true'">
+    <Compile Remove="Regression/**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="snippets/**" />
+  </ItemGroup>
+
+</Project>
