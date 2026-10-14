@@ -13,8 +13,9 @@ public sealed class BrokenWiringTests : IAsyncLifetime
 {
     private static readonly DateOnly Monday = new(2026, 11, 2);
 
-    private WebApplication? _app;
-    private HttpClient? _client;
+    // Set in InitializeAsync, which xUnit runs before every test.
+    private WebApplication _app = null!;
+    private HttpClient _client = null!;
 
     public async ValueTask InitializeAsync()
     {
@@ -27,7 +28,7 @@ public sealed class BrokenWiringTests : IAsyncLifetime
     public async Task GetBooking_AfterBookingIt_ReturnsTheBooking()
     {
         // Arrange
-        HttpResponseMessage posted = await _client!.PostAsJsonAsync(
+        HttpResponseMessage posted = await _client.PostAsJsonAsync(
             "/bookings", new BookingRequest("Ada Byrne", Monday));
         Booking? booked = await posted.Content.ReadFromJsonAsync<Booking>();
 
