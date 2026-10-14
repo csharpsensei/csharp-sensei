@@ -1,7 +1,7 @@
 public async Task GetBooking_AfterBookingIt_ReturnsTheBooking()
 {
     // Arrange
-    HttpResponseMessage posted = await _client!.PostAsJsonAsync(
+    HttpResponseMessage posted = await _client.PostAsJsonAsync(
         "/bookings", new BookingRequest("Ada Byrne", Monday));
     Booking? booked = await posted.Content.ReadFromJsonAsync<Booking>();
 

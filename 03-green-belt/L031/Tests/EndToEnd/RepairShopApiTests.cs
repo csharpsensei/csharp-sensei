@@ -17,8 +17,9 @@ public sealed class RepairShopApiTests : IAsyncLifetime
 {
     private static readonly DateOnly Monday = new(2026, 11, 2);
 
-    private WebApplication? _app;
-    private HttpClient? _client;
+    // Set in InitializeAsync, which xUnit runs before every test.
+    private WebApplication _app = null!;
+    private HttpClient _client = null!;
 
     public async ValueTask InitializeAsync()
     {
@@ -33,7 +34,7 @@ public sealed class RepairShopApiTests : IAsyncLifetime
     public async Task GetBooking_AfterBookingIt_ReturnsTheBooking()
     {
         // Arrange
-        HttpResponseMessage posted = await _client!.PostAsJsonAsync(
+        HttpResponseMessage posted = await _client.PostAsJsonAsync(
             "/bookings", new BookingRequest("Ada Byrne", Monday));
         Booking? booked = await posted.Content.ReadFromJsonAsync<Booking>();
 
@@ -49,7 +50,7 @@ public sealed class RepairShopApiTests : IAsyncLifetime
     public async Task Book_DayAlreadyTaken_ReturnsConflict()
     {
         // Arrange
-        await _client!.PostAsJsonAsync("/bookings", new BookingRequest("Ada Byrne", Monday));
+        await _client.PostAsJsonAsync("/bookings", new BookingRequest("Ada Byrne", Monday));
 
         // Act
         HttpResponseMessage second = await _client.PostAsJsonAsync(
@@ -66,7 +67,7 @@ public sealed class RepairShopApiTests : IAsyncLifetime
         BookingRequest noName = new("", Monday);
 
         // Act
-        HttpResponseMessage response = await _client!.PostAsJsonAsync("/bookings", noName);
+        HttpResponseMessage response = await _client.PostAsJsonAsync("/bookings", noName);
 
         // Assert
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);

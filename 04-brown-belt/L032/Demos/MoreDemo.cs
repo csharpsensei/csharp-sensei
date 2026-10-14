@@ -15,7 +15,8 @@ public static class MoreDemo
         }
 
         Console.WriteLine("Collection expression arguments");
-        HashSet<string> tags = [with(StringComparer.OrdinalIgnoreCase), "Urgent", "URGENT", "urgent"];
+        HashSet<string> tags =
+            [with(StringComparer.OrdinalIgnoreCase), "Urgent", "URGENT", "urgent"];
         Console.WriteLine($"  tags kept: {tags.Count}");
 
         Console.WriteLine("Extension indexers");
