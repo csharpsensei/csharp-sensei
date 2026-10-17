@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    One project on purpose. Real microservices are separate projects, built
+    and deployed separately. The lesson hosts all three apps in one process
+    so it is one folder and one command, and the README names that.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Microservices</RootNamespace>
+    <DefaultItemExcludes>$(DefaultItemExcludes);snippets/**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="snippets/**" />
+  </ItemGroup>
+
+</Project>

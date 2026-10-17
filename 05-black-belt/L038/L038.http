@@ -1,0 +1,11 @@
+# L038 requests. The ports are chosen by the operating system at start-up
+# (port 0), so there is no fixed address. When the program is running, put
+# the gateway's address here if you want to call it from your editor; the
+# lesson's own run does not need this file.
+@gateway = http://127.0.0.1:5000
+
+### The catalog, through the gateway
+GET {{gateway}}/catalog/products/7
+
+### Stock, through the gateway
+GET {{gateway}}/stock/levels/7
