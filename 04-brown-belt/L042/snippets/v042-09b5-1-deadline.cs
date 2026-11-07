@@ -3,3 +3,4 @@ using var deadline =
 
 Task<Quote>[] asking = firms
     .Select(firm => firm.QuoteAsync(deadline.Token))
+    .ToArray();
